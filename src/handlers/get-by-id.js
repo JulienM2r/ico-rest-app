@@ -1,3 +1,4 @@
+
 // Create clients and set shared const values outside of the handler
 
 // Create a DocumentClient that represents the query to get an item
