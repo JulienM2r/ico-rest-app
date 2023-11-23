@@ -1,0 +1,4 @@
+{
+    "httpMethod": "DELETE",
+    "body": "{\"id\": \"id1\", \"name\": \"name1\"}"
+}

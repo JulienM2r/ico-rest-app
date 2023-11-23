@@ -1,8 +1,6 @@
-
 const dynamodb = require('aws-sdk/clients/dynamodb');
 
 const docClient = new dynamodb.DocumentClient();
-
 
 const tableName = process.env.SAMPLE_TABLE;
 
@@ -35,6 +33,5 @@ exports.deleteItemHandler = async (event) => {
     };
 
     console.log(`Réponse de : ${path} StatusCode : ${response.statusCode} Body : ${response.body}`);
-
     return response;
 };
