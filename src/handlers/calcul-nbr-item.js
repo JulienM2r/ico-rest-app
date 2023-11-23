@@ -1,3 +1,4 @@
+
 // Create clients and set shared const values outside of the handler
 
 // Create a DocumentClient that represents the query to get all items
@@ -35,5 +36,6 @@ exports.getNbrItemsHandler = async (event) => {
     console.log(`response from: ${path} statusCode: ${response.statusCode} body: ${response.body}`);
     return response;
 };
+
 
 
