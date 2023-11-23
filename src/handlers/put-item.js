@@ -39,3 +39,4 @@ exports.putItemHandler = async (event) => {
     console.log(`response from: ${path} statusCode: ${response.statusCode} body: ${response.body}`);
     return response;
 };
+

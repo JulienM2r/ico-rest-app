@@ -1,4 +1,3 @@
-
 // Create clients and set shared const values outside of the handler
 
 // Create a DocumentClient that represents the query to get all items
@@ -12,7 +11,7 @@ const tableName = process.env.SAMPLE_TABLE;
 /**
  * A simple example includes a HTTP get method to get all items from a DynamoDB table.
  */
-exports.getNbrItemsHandler = async (event) => {
+exports.getAllItemsHandler = async (event) => {
     const { httpMethod, path } = event;
     if (httpMethod !== 'GET') {
         throw new Error(`getAllItems only accept GET method, you tried: ${httpMethod}`);
@@ -27,15 +26,20 @@ exports.getNbrItemsHandler = async (event) => {
     const params = { TableName: tableName };
     const { Items } = await docClient.scan(params).promise();
 
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify(Items.length),
+    const randomID = Math.floor(Math.random() * Items.length);
+
+    const params2 = {
+        TableName: tableName,
+        Key: { randomID },
     };
 
+    const { Item } = await docClient.get(params2).promise();
+
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify(Item),
+    };
 
     console.log(`response from: ${path} statusCode: ${response.statusCode} body: ${response.body}`);
     return response;
 };
-
-
-
