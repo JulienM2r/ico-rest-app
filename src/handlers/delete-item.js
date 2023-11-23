@@ -11,7 +11,7 @@ const tableName = process.env.SAMPLE_TABLE;
 /**
  * A simple example includes a HTTP post method to delete one item to a DynamoDB table.
  */
-exports.putItemHandler = async (event) => {
+exports.deleteItemHandler = async (event) => {
     const { body, httpMethod, path } = event;
     if (httpMethod !== 'POST') {
         throw new Error(`postMethod only accepts POST method, you tried: ${httpMethod} method.`);
@@ -23,8 +23,8 @@ exports.putItemHandler = async (event) => {
     // Get id and name from the body of the request
     const { id, name } = JSON.parse(body);
 
-    // Creates a new item, or replaces an old item with a new item
-    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
+    // Delete an item
+    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#delete-property
     const params = {
         TableName: tableName,
         Item: { id, name },
